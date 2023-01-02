@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Softnio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers." />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <title>在线QQ音乐听歌2小时</title>
+    <link rel="stylesheet" href="css/dashlite.css" />
+</head>
+<body class="nk-body bg-white npc-default pg-auth">
+<div class="nk-app-root">
+    <div class="nk-main ">
+        <div class="nk-wrap nk-wrap-nosidebar">
+            <div class="nk-content ">
+                <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h5 class="nk-block-title"><img class="logo-dark logo-img" src="img/music.png" /> QQ音乐</h5>
+                            <div class="nk-block-des">
+                                <p>在线QQ音乐听歌2小时 🎵</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-validate is-alter">
+                        <div class="form-group">
+                            <div class="form-control-wrap">
+                                <input autocomplete="off" type="text" class="form-control form-control-lg" required="" id="qq" placeholder="请输入要代练的QQ号码" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="TencentCaptcha" class="btn btn-lg btn-primary btn-block">确 定 代 练</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nk-block nk-auth-footer">
+                    <div class="nk-block-between">
+                        <ul class="nav nav-sm">
+                            <li class="nav-item"><a class="nav-link" href="https://kfzz.github.io/">看风の主页</a></li>
+                        </ul>
+                    </div>
+                    <div class="mt-3">
+                        <p>&copy; 2023 KFzZ. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+<script src="layer/layer.js"></script>
+<script>
+    var tcaptchaCallback = function(res){
+        if (res.ret === 0) {
+            layer.msg('代练听歌中...', {
+                icon: 16
+                ,shade: 0.01
+            });
+            const qq = $("#qq").val()
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    ticket: res.ticket,
+                    randstr: res.randstr,
+                    qq: qq
+                },
+                url: "api/api.php",
+                success: function (data) {
+                    if (data.code === 200) {
+                        layer.close()
+                         layer.alert(data.msg,{
+                            icon: 1,
+                            skin: 'layui-layer-lan'
+                            
+                        })
+                    }else{
+                        layer.close()
+                        layer.alert(data.msg,{
+                            icon: 2,
+                            skin: 'layui-layer-lan'
+                            
+                        })
+                    }
+                },
+                error: function () {
+                    layer.close()
+                    layer.msg('服务器出错，请联系客服')
+                }
+            });
+        }
+    }
+    $(document).ready(function(){
+        var captcha1 = new TencentCaptcha('2046626881', tcaptchaCallback);
+        $("#TencentCaptcha").click(function(){
+            captcha1.show();
+        })
+    })
+</script>
+</body>
+</html>
