@@ -1,10 +1,3 @@
-/*
-Program name: Payment Code
-Author: NianBroken
-Website: https://www.nianbroken.top/
-Gmail: suinian666@gmail.com
-Time: 2023.06.06
-*/
 document.addEventListener("DOMContentLoaded", function () {
 	// 选择容器元素和所有二维码元素
 	var container = document.querySelector(".container");
@@ -16,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// 创建第一行页脚元素并设置文本内容、字体大小和颜色
 	var line1 = document.createElement("div");
-	line1.textContent = "若无法直接付款 请截图保存后再扫描二维码";
+	line1.textContent = "若无法直接付款 请截图保存后再扫描二维码或加下方微信";
 	line1.style.fontSize = "1.10rem"; // 设置初始的第一行页脚的字体大小
 	line1.style.color = "#000000"; // 设置第一行页脚的字体颜色
 	footer.appendChild(line1);
 
 	// 创建第二行页脚元素并设置文本内容、字体大小和颜色
 	var line2 = document.createElement("div");
-	line2.textContent = "USDT:TDieuomyJMeN7tK5XwP1nhykw5dDiDLZ4n";
+	line2.textContent = "Z-KF-Z";
 	line2.style.fontSize = "0.9125rem"; // 设置初始的第二行页脚的字体大小
 	line2.style.color = "#666666"; // 设置第二行页脚的字体颜色
 	line2.style.cursor = "pointer"; // 设置鼠标样式为指针
