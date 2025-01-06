@@ -111,11 +111,6 @@ body {
 	height: 128px; /* 设置二维码高度 */
 }
 
-#qr-code3 img {
-	width: 128px; /* 设置二维码宽度 */
-	height: 128px; /* 设置二维码高度 */
-}
-
 .footer {
 	margin-bottom: 5px; /* 设置页脚下方外边距 */
 }
